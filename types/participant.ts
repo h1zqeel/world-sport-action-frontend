@@ -28,7 +28,7 @@ type TEmergencyContact = {
 
 type TSportsInfo = {
     favouriteTeam: string | null;
-    heardAboutCompetition: string | null;
+    heardyAboutCompetition: string | null;
     heardAboutOther: string | null;
     walkingSportInfo: string | null;
 };
@@ -81,7 +81,7 @@ type TParticipant = {
     isHidden: boolean;
     photographyConsent: boolean;
     marketingOptIn: boolean;
-    doNotSendEmails: boolean;
+    doNotSendEmail: boolean;
     externalUserId: string | null;
     ContactInfo: TContactInfo;
     MedicalInfo: TMedicalInfo;

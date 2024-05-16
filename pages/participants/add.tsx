@@ -16,7 +16,7 @@ export default function Home() {
 	const [isHidden, setIsHidden] = useState(true);
 	const [photographyConsent, setPhotographyConsent] = useState(false);
 	const [marketingOptIn, setMarketingOptIn] = useState(false);
-	const [doNotSendEmails, setDoNotSendEmails] = useState(false);
+	const [doNotSendEmail, setDoNotSendEmail] = useState(false);
 	const [externalUserId, setExternalUserId] = useState<string | null>(null);
 
 	const [contactInfo, setContactInfo] = useState<TContactInfo>({
@@ -47,7 +47,7 @@ export default function Home() {
 
 	const [sportsInfo, setSportsInfo] = useState<TSportsInfo>({
 		favouriteTeam: null,
-		heardAboutCompetition: null,
+		heardyAboutCompetition: null,
 		heardAboutOther: null,
 		walkingSportInfo: null,
 	});
@@ -96,7 +96,85 @@ export default function Home() {
 	const [error, setError] = useState("");
 	const [success, setSuccess] = useState("");
 
+	const resetState = () => {
+		setFirstName(null);
+		setMiddleName(null);
+		setLastName(null);
+		setGender(null);
+		setDateOfBirth(null);
+		setCountryBirth(null);
+		setIsHidden(true);
+		setPhotographyConsent(false);
+		setMarketingOptIn(false);
+		setDoNotSendEmail(false);
+		setExternalUserId(null);
+		setContactInfo({
+			email: null,
+			mobileNumber: null,
+			address: null,
+			postalCode: null,
+			street1: null,
+			suburb: null,
+			state: null,
+			country: null,
+		});
+		setMedicalInfo({
+			existingMedicalCondition: null,
+			regularMedication: null,
+			hasDisability: false,
+			injury: null,
+			allergy: null,
+			ambulanceCover: false,
+		});
+		setEmergencyContact({
+			emergencyFirstName: null,
+			emergencyLastName: null,
+			emergencyContactName: null,
+		});
+		setSportsInfo({
+			favouriteTeam: null,
+			heardyAboutCompetition: null,
+			heardAboutOther: null,
+			walkingSportInfo: null,
+		});
+		setOccupationEducation({
+			occupation: null,
+			school: null,
+			schoolGrade: null,
+			yearsPlayed: null,
+			SSP: false,
+		});
+		setAccreditationInfo({
+			isUmpirePrerequisiteTrainingComplete: false,
+			accreditationUmpireLevel: null,
+			accreditationUmpireExpiryDate: null,
+			associationLevel: null,
+			accreditationCoachLevel: null,
+			accreditationCoachExpiryDate: null,
+		});
+		setChildrenCheckInfo({
+			childrenCheckNumber: null,
+			childrenCheckExpiryDate: null,
+		});
+		setUmpireInfo({
+			isNewToUmpiring: false,
+		});
+		setHealthIndicator({
+			chestPain: false,
+			heartTrouble: false,
+			bloodPressure: 0,
+			faintOrSpells: false,
+			lowerBackProblem: false,
+			physicalActivity: 0,
+			jointOrBoneProblem: false,
+			pregnant: false,
+		});
+	};
+
 	const saveParticipant = async () => {
+		setError("");
+		setSuccess("");
+
 		const participant = {
 			firstName,
 			middleName,
@@ -107,7 +185,7 @@ export default function Home() {
 			isHidden,
 			photographyConsent,
 			marketingOptIn,
-			doNotSendEmails,
+			doNotSendEmail,
 			contactInfo,
 			medicalInfo,
 			emergencyContact,
@@ -131,6 +209,7 @@ export default function Home() {
 		try {
 			await axios.post(`${serverUrl}/participants`, participant);
 			setSuccess("Participant Added Successfully!");
+			resetState();
 		} catch (error) {
 			if (axios.isAxiosError(error)) {
 				setError(error.response ? error.response.data : error.message);
@@ -154,12 +233,11 @@ return (
 		<div className="flex-row text-left"><label>Is Hidden</label><Checkbox {...{ inputProps: { 'aria-label': 'isHidden' } }} onChange={(e) => setIsHidden(e.target.checked)} value={isHidden} /></div>
 		<div className="flex-row text-left"><label>Photography Consent</label><Checkbox {...{ inputProps: { 'aria-label': 'photographyConsent' } }} onChange={(e) => setPhotographyConsent(e.target.checked)} value={photographyConsent} /></div>
 		<div className="flex-row text-left"><label>Marketing Opt In</label><Checkbox {...{ inputProps: { 'aria-label': 'marketingOptIn' } }} onChange={(e) => setMarketingOptIn(e.target.checked)} value={marketingOptIn} /></div>
-		<div className="flex-row text-left"><label>Do Not Send Emails</label><Checkbox {...{ inputProps: { 'aria-label': 'doNotSendEmails' } }} onChange={(e) => setDoNotSendEmails(e.target.checked)} value={doNotSendEmails} /></div>
+		<div className="flex-row text-left"><label>Do Not Send Emails</label><Checkbox {...{ inputProps: { 'aria-label': 'doNotSendEmail' } }} onChange={(e) => setDoNotSendEmail(e.target.checked)} value={doNotSendEmail} /></div>
 		<TextField label="External User Id" value={externalUserId} onChange={(e) => setExternalUserId(e.target.value)} />
 		<label className="text-left font-bold">Contact Info</label>
 		<TextField label="Email" value={contactInfo.email} onChange={(e) => setContactInfo({ ...contactInfo, email: e.target.value })} />
 		<TextField label="Mobile Number" value={contactInfo.mobileNumber} onChange={(e) => setContactInfo({ ...contactInfo, mobileNumber: e.target.value })} />
-		<TextField label="Address" value={contactInfo.address} onChange={(e) => setContactInfo({ ...contactInfo, address: e.target.value })} />
 		<TextField label="Postal Code" value={contactInfo.postalCode} onChange={(e) => setContactInfo({ ...contactInfo, postalCode: e.target.value })} />
 		<TextField label="Street1" value={contactInfo.street1} onChange={(e) => setContactInfo({ ...contactInfo, street1: e.target.value })} />
 		<TextField label="Suburb" value={contactInfo.suburb} onChange={(e) => setContactInfo({ ...contactInfo, suburb: e.target.value })} />
@@ -178,7 +256,7 @@ return (
 		<TextField label="Emergency Contact Name" value={emergencyContact.emergencyContactName} onChange={(e) => setEmergencyContact({ ...emergencyContact, emergencyContactName: e.target.value })} />
 		<label className="text-left font-bold">Sports Info</label>
 		<TextField label="Favourite Team" value={sportsInfo.favouriteTeam} onChange={(e) => setSportsInfo({ ...sportsInfo, favouriteTeam: e.target.value })} />
-		<TextField label="Heard About Competition" value={sportsInfo.heardAboutCompetition} onChange={(e) => setSportsInfo({ ...sportsInfo, heardAboutCompetition: e.target.value })} />
+		<TextField label="Heard About Competition" value={sportsInfo.heardyAboutCompetition} onChange={(e) => setSportsInfo({ ...sportsInfo, heardyAboutCompetition: e.target.value })} />
 		<TextField label="Heard About Other" value={sportsInfo.heardAboutOther} onChange={(e) => setSportsInfo({ ...sportsInfo, heardAboutOther: e.target.value })} />
 		<TextField label="Walking Sport Info" value={sportsInfo.walkingSportInfo} onChange={(e) => setSportsInfo({ ...sportsInfo, walkingSportInfo: e.target.value })} />
 		<label className="text-left font-bold">Occupation Education</label>

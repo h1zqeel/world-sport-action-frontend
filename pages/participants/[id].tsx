@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import axios from "axios";
 import { DatePicker } from "@mui/x-date-pickers";
 import dayjs, { Dayjs } from "dayjs";
-import { TContactInfo, TMedicalInfo, TEmergencyContact, TSportsInfo, TOccupationEducation, TAccreditationInfo, TChildrenCheckInfo, TUmpireInfo, THealthIndicators } from "@/types/participant";
+import { TContactInfo, TMedicalInfo, TEmergencyContact, TSportsInfo, TOccupationEducation, TAccreditationInfo, TChildrenCheckInfo, TUmpireInfo, THealthIndicator } from "@/types/participant";
 import { serverUrl } from "@/utils";
 
 export default function Home() {
@@ -48,7 +48,7 @@ export default function Home() {
 
 	const [sportsInfo, setSportsInfo] = useState<TSportsInfo>({
 		favouriteTeam: null,
-		heardAboutCompetition: null,
+		heardyAboutCompetition: null,
 		heardAboutOther: null,
 		walkingSportInfo: null,
 	});
@@ -83,7 +83,7 @@ export default function Home() {
 		isNewToUmpiring: false,
 	});
 
-	const [healthIndicator, setHealthIndicator] = useState<THealthIndicators>({
+	const [healthIndicator, setHealthIndicator] = useState<THealthIndicator>({
 		chestPain: false,
 		heartTrouble: false,
 		bloodPressure: 0,
@@ -218,7 +218,6 @@ return (
 		<label className="text-left font-bold">Contact Info</label>
 		<TextField InputLabelProps={{ shrink: true }} label="Email" value={contactInfo.email} onChange={(e) => setContactInfo({ ...contactInfo, email: e.target.value })} />
 		<TextField InputLabelProps={{ shrink: true }} label="Mobile Number" value={contactInfo.mobileNumber} onChange={(e) => setContactInfo({ ...contactInfo, mobileNumber: e.target.value })} />
-		<TextField InputLabelProps={{ shrink: true }} label="Address" value={contactInfo.address} onChange={(e) => setContactInfo({ ...contactInfo, address: e.target.value })} />
 		<TextField InputLabelProps={{ shrink: true }} label="Postal Code" value={contactInfo.postalCode} onChange={(e) => setContactInfo({ ...contactInfo, postalCode: e.target.value })} />
 		<TextField InputLabelProps={{ shrink: true }} label="Street1" value={contactInfo.street1} onChange={(e) => setContactInfo({ ...contactInfo, street1: e.target.value })} />
 		<TextField InputLabelProps={{ shrink: true }} label="Suburb" value={contactInfo.suburb} onChange={(e) => setContactInfo({ ...contactInfo, suburb: e.target.value })} />
@@ -237,7 +236,7 @@ return (
 		<TextField InputLabelProps={{ shrink: true }} label="Emergency Contact Name" value={emergencyContact.emergencyContactName} onChange={(e) => setEmergencyContact({ ...emergencyContact, emergencyContactName: e.target.value })} />
 		<label className="text-left font-bold">Sports Info</label>
 		<TextField InputLabelProps={{ shrink: true }} label="Favourite Team" value={sportsInfo.favouriteTeam} onChange={(e) => setSportsInfo({ ...sportsInfo, favouriteTeam: e.target.value })} />
-		<TextField InputLabelProps={{ shrink: true }} label="Heard About Competition" value={sportsInfo.heardAboutCompetition} onChange={(e) => setSportsInfo({ ...sportsInfo, heardAboutCompetition: e.target.value })} />
+		<TextField InputLabelProps={{ shrink: true }} label="Heard About Competition" value={sportsInfo.heardyAboutCompetition} onChange={(e) => setSportsInfo({ ...sportsInfo, heardyAboutCompetition: e.target.value })} />
 		<TextField InputLabelProps={{ shrink: true }} label="Heard About Other" value={sportsInfo.heardAboutOther} onChange={(e) => setSportsInfo({ ...sportsInfo, heardAboutOther: e.target.value })} />
 		<TextField InputLabelProps={{ shrink: true }} label="Walking Sport Info" value={sportsInfo.walkingSportInfo} onChange={(e) => setSportsInfo({ ...sportsInfo, walkingSportInfo: e.target.value })} />
 		<label className="text-left font-bold">Occupation Education</label>

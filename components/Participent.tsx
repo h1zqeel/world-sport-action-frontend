@@ -165,7 +165,7 @@ export default function Participant({
             </div>
             <div>
                 <strong>Heard About Competition:</strong>{" "}
-                {participant.SportsInfo.heardAboutCompetition || "-"}
+                {participant.SportsInfo.heardyAboutCompetition || "-"}
             </div>
             <div>
                 <strong>Heard About Other:</strong>{" "}
@@ -221,47 +221,47 @@ export default function Participant({
                 <strong>Is New to Umpiring:</strong>{" "}
                 {participant.UmpireInfo.isNewToUmpiring ? "Yes" : "No"}
             </div>
-            {participant.HealthIndicators && (
+            {participant.HealthIndicator && (
                 <>
                     <div>
                         <strong>Chest Pain:</strong>{" "}
-                        {participant.HealthIndicators.chestPain ? "Yes" : "No"}
+                        {participant.HealthIndicator.chestPain ? "Yes" : "No"}
                     </div>
                     <div>
                         <strong>Heart Trouble:</strong>{" "}
-                        {participant.HealthIndicators.heartTrouble
+                        {participant.HealthIndicator.heartTrouble
                             ? "Yes"
                             : "No"}
                     </div>
                     <div>
                         <strong>Blood Pressure:</strong>{" "}
-                        {participant.HealthIndicators.bloodPressure || "-"}
+                        {participant.HealthIndicator.bloodPressure || "-"}
                     </div>
                     <div>
                         <strong>Faint or Spells:</strong>{" "}
-                        {participant.HealthIndicators.faintOrSpells
+                        {participant.HealthIndicator.faintOrSpells
                             ? "Yes"
                             : "No"}
                     </div>
                     <div>
                         <strong>Lower Back Problem:</strong>{" "}
-                        {participant.HealthIndicators.lowerBackProblem
+                        {participant.HealthIndicator.lowerBackProblem
                             ? "Yes"
                             : "No"}
                     </div>
                     <div>
                         <strong>Physical Activity:</strong>{" "}
-                        {participant.HealthIndicators.physicalActivity || "-"}
+                        {participant.HealthIndicator.physicalActivity || "-"}
                     </div>
                     <div>
                         <strong>Joint or Bone Problem:</strong>{" "}
-                        {participant.HealthIndicators.jointOrBoneProblem
+                        {participant.HealthIndicator.jointOrBoneProblem
                             ? "Yes"
                             : "No"}
                     </div>
                     <div>
                         <strong>Pregnant:</strong>{" "}
-                        {participant.HealthIndicators.pregnant ? "Yes" : "No"}
+                        {participant.HealthIndicator.pregnant ? "Yes" : "No"}
                     </div>
                 </>
             )}
@@ -278,7 +278,7 @@ export default function Participant({
             </div>
             <div>
                 <strong>Do Not Send Emails:</strong>{" "}
-                {participant.doNotSendEmails ? "Yes" : "No"}
+                {participant.doNotSendEmail ? "Yes" : "No"}
             </div>
 			<div className="mt-2">
 				<h3 className="mb-2"> <b>Languages</b> </h3>
@@ -339,7 +339,7 @@ export default function Participant({
 				{
 					addVolunteer && <div className="mt-2">
 						<TextField label="Description" value={volunteer.description} onChange={(e)=>setVolunteer({...volunteer, description: e.target.value})} />
-						<div className="flex-row text-left"><label>isActive</label><Checkbox {...{ inputProps: { 'aria-label': 'isActive' } }}  onChange={(e) => setVolunteer({...volunteer, isActive: e.target.checked})} value={volunteer.isActive} /></div>
+						<div className="flex-row text-left"><label>isActive</label><Checkbox {...{ inputProps: { 'aria-label': 'isActive' } }}  onChange={(e) => setVolunteer({...volunteer, isActive: e.target.checked})} value={volunteer.isActive} checked={volunteer.isActive} /></div>
 						<Button onClick={addVolunteerHandler}> Add </Button>
 						</div>
 				}

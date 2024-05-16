@@ -24,12 +24,21 @@ export default function Home() {
 			competitionName,
 			competitionStartDate,
 			competitionEndDate,
-
+			competitionDivision,
+			membershipProduct,
+			membershipDivision
 		};
 
 		try {
 			await axios.post(`${serverUrl}/competitions`, competition);
 			setSuccess("Competition Added Successfully!");
+
+			setCompetitionName("");
+			setCompetitionStartDate(null);
+			setCompetitionEndDate(null);
+			setCompetitionDivision("");
+			setMembershipProduct("");
+			setMembershipDivision("");
 		} catch (error) {
 			if (axios.isAxiosError(error)) {
 				setError(error.response ? error.response.data : error.message);
