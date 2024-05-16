@@ -10,7 +10,7 @@ function formatDate(inputDateStr : any) {
     const year = inputDate.getFullYear();
 
     const formattedDate = `${year}-${month}-${day}`;
-    
+
     return formattedDate;
 }
 

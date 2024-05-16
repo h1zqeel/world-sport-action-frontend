@@ -102,9 +102,6 @@ export default function Participant({
 		setReload(!reload);
 	}
 
-
-
-
     return (
         <div key={participant.id} className="participant-details text-left">
             <br></br>
