@@ -59,7 +59,7 @@ type TUmpireInfo = {
     isNewToUmpiring: boolean;
 };
 
-type THealthIndicators = {
+type THealthIndicator = {
     chestPain: boolean;
     heartTrouble: boolean;
     bloodPressure: number;
@@ -91,7 +91,7 @@ type TParticipant = {
     AccreditationInfo: TAccreditationInfo;
     ChildrenCheckInfo: TChildrenCheckInfo;
     UmpireInfo: TUmpireInfo;
-    HealthIndicators: THealthIndicators;
+    HealthIndicator: THealthIndicator;
 	Languages: Array<string>;
 };
 
@@ -104,6 +104,6 @@ export type {
     TAccreditationInfo,
     TChildrenCheckInfo,
     TUmpireInfo,
-    THealthIndicators,
+    THealthIndicator,
     TParticipant
 };

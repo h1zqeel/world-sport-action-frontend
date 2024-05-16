@@ -86,7 +86,7 @@ return (
 			<div><strong>disabilityType</strong> {fullParticipantRegistrationDetails?.disabilityType}</div>
 			<div><strong>injury</strong> {fullParticipantRegistrationDetails?.injury}</div>
 			<div><strong>ambulanceCover</strong> {fullParticipantRegistrationDetails?.ambulanceCover}</div>
-			<div><strong>healthIndicators</strong> {fullParticipantRegistrationDetails?.healthIndicators}</div>
+			<div><strong>healthIndicator</strong> {fullParticipantRegistrationDetails?.healthIndicator}</div>
 			<div><strong>walkingSportInfo</strong> {fullParticipantRegistrationDetails?.walkingSportInfo}</div>
 			<div><strong>doNotSendEmail</strong> {fullParticipantRegistrationDetails?.doNotSendEmail}</div>
 		</div>

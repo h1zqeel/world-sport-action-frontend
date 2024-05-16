@@ -2,7 +2,7 @@ import { Button, Checkbox, TextField } from "@mui/material";
 import { useState } from "react";
 import axios from "axios";
 import { DatePicker } from "@mui/x-date-pickers";
-import { TContactInfo, TMedicalInfo, TEmergencyContact, TSportsInfo, TOccupationEducation, TAccreditationInfo, TChildrenCheckInfo, TUmpireInfo, THealthIndicators } from "@/types/participant";
+import { TContactInfo, TMedicalInfo, TEmergencyContact, TSportsInfo, TOccupationEducation, TAccreditationInfo, TChildrenCheckInfo, TUmpireInfo, THealthIndicator } from "@/types/participant";
 import { Dayjs } from "dayjs";
 import { serverUrl } from "@/utils";
 
@@ -82,7 +82,7 @@ export default function Home() {
 		isNewToUmpiring: false,
 	});
 
-	const [healthIndicators, setHealthIndicators] = useState<THealthIndicators>({
+	const [healthIndicator, setHealthIndicator] = useState<THealthIndicator>({
 		chestPain: false,
 		heartTrouble: false,
 		bloodPressure: 0,
@@ -116,7 +116,7 @@ export default function Home() {
 			accreditationInfo,
 			childrenCheckInfo,
 			umpireInfo,
-			healthIndicators,
+			healthIndicator,
 			ContactInfo: contactInfo,
 			MedicalInfo: medicalInfo,
 			EmergencyContact: emergencyContact,
@@ -124,7 +124,7 @@ export default function Home() {
 			OccupationEducation: occupationEducation,
 			AccreditationInfo: accreditationInfo,
 			UmpireInfo: umpireInfo,
-			HealthIndicators: healthIndicators,
+			HealthIndicator: healthIndicator,
 			ChildrenCheckInfo: childrenCheckInfo
 		};
 
@@ -200,14 +200,14 @@ return (
 		<label className="text-left font-bold">Umpire Info</label>
 		<div className="flex-row text-left"><label>Is New To Umpiring</label><Checkbox {...{ inputProps: { 'aria-label': 'isNewToUmpiring' } }} onChange={(e) => setUmpireInfo({ ...umpireInfo, isNewToUmpiring: e.target.checked })} value={umpireInfo.isNewToUmpiring} /></div>
 		<label className="text-left font-bold">Health Indicators</label>
-		<div className="flex-row text-left"><label>Chest Pain</label><Checkbox {...{ inputProps: { 'aria-label': 'chestPain' } }} onChange={(e) => setHealthIndicators({ ...healthIndicators, chestPain: e.target.checked })} value={healthIndicators.chestPain} /></div>
-		<div className="flex-row text-left"><label>Heart Trouble</label><Checkbox {...{ inputProps: { 'aria-label': 'heartTrouble' } }} onChange={(e) => setHealthIndicators({ ...healthIndicators, heartTrouble: e.target.checked })} value={healthIndicators.heartTrouble} /></div>
-		<TextField label="Blood Pressure" value={healthIndicators.bloodPressure} type="number" onChange={(e) => setHealthIndicators({ ...healthIndicators, bloodPressure: parseInt(e.target.value) })} />
-		<div className="flex-row text-left"><label>Faint Or Spells</label><Checkbox {...{ inputProps: { 'aria-label': 'faintOrSpells' } }} onChange={(e) => setHealthIndicators({ ...healthIndicators, faintOrSpells: e.target.checked })} value={healthIndicators.faintOrSpells} /></div>
-		<div className="flex-row text-left"><label>Lower Back Problem</label><Checkbox {...{ inputProps: { 'aria-label': 'lowerBackProblem' } }} onChange={(e) => setHealthIndicators({ ...healthIndicators, lowerBackProblem: e.target.checked })} value={healthIndicators.lowerBackProblem} /></div>
-		<TextField label="Physical Activity" value={healthIndicators.physicalActivity} type="number" onChange={(e) => setHealthIndicators({ ...healthIndicators, physicalActivity: parseInt(e.target.value) })} />
-		<div className="flex-row text-left"><label>Joint Or Bone Problem</label><Checkbox {...{ inputProps: { 'aria-label': 'jointOrBoneProblem' } }} onChange={(e) => setHealthIndicators({ ...healthIndicators, jointOrBoneProblem: e.target.checked })} value={healthIndicators.jointOrBoneProblem} /></div>
-		<div className="flex-row text-left"><label>Pregnant</label><Checkbox {...{ inputProps: { 'aria-label': 'pregnant' } }} onChange={(e) => setHealthIndicators({ ...healthIndicators, pregnant: e.target.checked })} value={healthIndicators.pregnant} /></div>
+		<div className="flex-row text-left"><label>Chest Pain</label><Checkbox {...{ inputProps: { 'aria-label': 'chestPain' } }} onChange={(e) => setHealthIndicator({ ...healthIndicator, chestPain: e.target.checked })} value={healthIndicator.chestPain} /></div>
+		<div className="flex-row text-left"><label>Heart Trouble</label><Checkbox {...{ inputProps: { 'aria-label': 'heartTrouble' } }} onChange={(e) => setHealthIndicator({ ...healthIndicator, heartTrouble: e.target.checked })} value={healthIndicator.heartTrouble} /></div>
+		<TextField label="Blood Pressure" value={healthIndicator.bloodPressure} type="number" onChange={(e) => setHealthIndicator({ ...healthIndicator, bloodPressure: parseInt(e.target.value) })} />
+		<div className="flex-row text-left"><label>Faint Or Spells</label><Checkbox {...{ inputProps: { 'aria-label': 'faintOrSpells' } }} onChange={(e) => setHealthIndicator({ ...healthIndicator, faintOrSpells: e.target.checked })} value={healthIndicator.faintOrSpells} /></div>
+		<div className="flex-row text-left"><label>Lower Back Problem</label><Checkbox {...{ inputProps: { 'aria-label': 'lowerBackProblem' } }} onChange={(e) => setHealthIndicator({ ...healthIndicator, lowerBackProblem: e.target.checked })} value={healthIndicator.lowerBackProblem} /></div>
+		<TextField label="Physical Activity" value={healthIndicator.physicalActivity} type="number" onChange={(e) => setHealthIndicator({ ...healthIndicator, physicalActivity: parseInt(e.target.value) })} />
+		<div className="flex-row text-left"><label>Joint Or Bone Problem</label><Checkbox {...{ inputProps: { 'aria-label': 'jointOrBoneProblem' } }} onChange={(e) => setHealthIndicator({ ...healthIndicator, jointOrBoneProblem: e.target.checked })} value={healthIndicator.jointOrBoneProblem} /></div>
+		<div className="flex-row text-left"><label>Pregnant</label><Checkbox {...{ inputProps: { 'aria-label': 'pregnant' } }} onChange={(e) => setHealthIndicator({ ...healthIndicator, pregnant: e.target.checked })} value={healthIndicator.pregnant} /></div>
 		{error && <p className="text-red-500">{error}</p>}
 		{success && <p className="text-green-500">{success}</p>}
 		<div className="flex flex-row justify-around"><Button variant="contained" color="secondary" href="/participants"> Cancel </Button> <Button variant="contained" color="primary" onClick={saveParticipant}> Save </Button></div>
