@@ -14,6 +14,6 @@ function formatDate(inputDateStr : any) {
     return formattedDate;
 }
 
-const serverUrl = "http://localhost:4000";
+const serverUrl = "http://ec2-54-66-80-229.ap-southeast-2.compute.amazonaws.com:4000";
 
 export { formatDate, serverUrl }

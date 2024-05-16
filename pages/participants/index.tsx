@@ -28,7 +28,10 @@ export default function Home() {
       <div className="flex flex-col text-center">
         <h1 className="mb-5 text-xl">World Sport Action</h1>
         <div className="flex flex-col space-y-2">
-          <Button variant="contained" color="primary" href="/participants/add"> Add a Participant </Button>
+          <div className="flex flex-row space-x-2">
+            <Button variant="contained" color="secondary" href="/"> Back </Button>
+            <Button variant="contained" color="primary" href="/participants/add"> Add a Participant </Button>
+          </div>
           <div>
             Below is the list of all participants
           </div>
