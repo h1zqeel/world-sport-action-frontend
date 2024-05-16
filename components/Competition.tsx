@@ -149,7 +149,9 @@ export default function Competition({
                         onChange={handleChange}
                     >
                         <MenuItem value={0} selected={true}>Select Participant</MenuItem>
-                        {availableParticipants.map((participant) => {
+                        {availableParticipants.filter((participant) => {
+                            return !registeredParticipants.find((registeredParticipant) => registeredParticipant.id === participant.id);
+                        }).map((participant) => {
                             return (
                                 <MenuItem
                                     key={participant.id}
@@ -290,7 +292,7 @@ export default function Competition({
                                         <div>
                                             Name: {participant.firstName} {participant.middleName} {participant.lastName}
                                         </div>
-                                        <Button variant="outlined"> View Details </Button>
+                                        <Button variant="outlined" href={`/competitions/${competition.id}/participant/${participant.id}`}> View Details </Button>
                                     </span>
                                 </div>
                             );
