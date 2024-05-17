@@ -115,7 +115,10 @@ export default function Competition({
             {
                 role,
                 team,
-                nonRegisteredParticipantId
+                nonRegisteredParticipantId,
+                preferredPosition1,
+                preferredPosition2,
+                organisation,
             }
         );
         await loadRegisteredParticipants();
@@ -292,7 +295,7 @@ export default function Competition({
                                         <div>
                                             Name: {participant.firstName} {participant.middleName} {participant.lastName}
                                         </div>
-                                        <Button variant="outlined" href={`/competitions/${competition.id}/participant/${participant.id}`}> View Details </Button>
+                                        <Button variant="outlined" href={`https://world-sport-action-api.h1zqeel.com/competitions/${competition.id}/participants/${participant.id}`}> View Details </Button>
                                     </span>
                                 </div>
                             );
